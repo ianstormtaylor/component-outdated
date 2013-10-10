@@ -1,0 +1,26 @@
+{
+  "name": "component-outdated",
+  "repository": "git://github.com/typefaces/component-outdated.git",
+  "version": "0.0.1",
+  "license": "MIT",
+  "description": "A component command plugin to list outdated dependencies.",
+  "keywords": [
+    "component",
+    "command",
+    "plugin",
+    "outdated",
+    "dependencies",
+    "version"
+  ],
+  "dependencies": {
+    "batch": "~0.5.0",
+    "commander": "1.0.5",
+    "component": "~0.17.6",
+    "each-component": "git://github.com/component/each",
+    "pad-component": "0.0.1",
+    "superagent": "~0.15.5"
+  },
+  "bin": {
+    "component-outdated": "bin/component-outdated"
+  }
+}
