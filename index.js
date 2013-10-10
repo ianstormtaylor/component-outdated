@@ -1,7 +1,7 @@
 
 var Batch = require('batch');
+var component = require('component');
 var each = require('each-component');
-var superagent = require('superagent');
 
 
 /**
@@ -23,22 +23,16 @@ function outdated (json, callback) {
   var deps = json.dependencies || {};
 
   each(deps, function (repo, version) {
-    if (version === '*') return;
+    if (version === '*' || version === 'master') return;
     batch.push(function (done) {
-      superagent
-        .get(url(repo))
-        .set('Accept-Encoding', 'gzip')
-        .end(function (err, res) {
-          if (err) return done(err);
-          var json;
-          try { json = JSON.parse(res.text); }
-          catch (err) { return done(err); }
-          done(null, {
-            repo: repo,
-            local: version,
-            remote: json.version
-          });
+      component.info(repo, 'master', function (err, json) {
+        if (err) return done(err);
+        done(null, {
+          repo: repo,
+          local: version,
+          remote: json.version
         });
+      });
     });
   });
 
@@ -68,15 +62,4 @@ function clean (result) {
   });
 
   return ret;
-}
-
-
-/**
- * Return the GitHub raw URL for a `repo` string.
- *
- * @return {String} repo
- */
-
-function url (repo) {
-  return 'https://raw.github.com/' + repo + '/master/component.json';
 }

@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 
-var component = require('component');
 var each = require('each-component');
 var fs = require('fs');
 var json = require('../package.json');
@@ -8,7 +7,7 @@ var outdated = require('..');
 var pad = require('pad-component');
 var path = require('path');
 var program = require('commander');
-var utils = component.utils;
+var utils = require('component').utils;
 
 
 /**
