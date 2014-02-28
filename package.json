@@ -1,6 +1,6 @@
 {
   "name": "component-outdated",
-  "repository": "git://github.com/typefaces/component-outdated.git",
+  "repository": "git://github.com/ianstormtaylor/component-outdated.git",
   "version": "0.0.2",
   "license": "MIT",
   "description": "A component command plugin to list outdated dependencies.",
